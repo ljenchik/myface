@@ -1,29 +1,31 @@
 <html lang="en-gb">
-<%- include('_head') -%>
-<%- include('_header') -%>
+  <%- include('_head') -%> <%- include('_header') -%>
 
-<body>
-<h1>Posts</h1>
-<div class="post_list_item">
-<ol>
-    <% postList.results.forEach(function(post) {%>
+  <body>
+    <h1>Posts</h1>
+    <div class="post_list_item">
+      <ol>
+        <% postList.results.forEach(function(post) {%>
         <li>
-            <img src="<%=post.imageUrl%>"  id ="image" alt="user image" width=500 height=500/>
-            <%= post.message %> posted by <%= post.postedBy.name%> <%= post.postedBy.email %>
+          <img
+            src="<%=post.imageUrl%>"
+            id="image"
+            alt="user image"
+            width="500"
+            height="500"
+          />
+          <%= post.message %> posted by <%= post.postedBy.name%> <%=
+          post.postedBy.email %>
         </li>
-    <% }) %>
+        <% }) %>
+      </ol>
+    </div>
 
-</ol>
-</div>
-
-<%if (previous) { %>
+    <%if (previous) { %>
     <a href="<%= previous %>"> Previous </a>
-<% } %>
-<%if (next) { %>
+    <% } %> <%if (next) { %>
     <a href="<%= next %>"> Next </a>
-<% } %>
-</body>
-<%- include('_footer') -%>
+    <% } %>
+  </body>
+  <%- include('_footer') -%>
 </html>
-
-
