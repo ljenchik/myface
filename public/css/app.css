@@ -1,13 +1,23 @@
-#image {
+    .post_list_text {
+        text-align: center;
+        font-size: 20px;
+        display: block;
+        margin-top: 20px;
+        border: 3px ridge rgb(188, 188, 244);
+        background-color: rgb(205, 234, 244);
+        padding: 50px;
+        background-size: 150px;
+}
+
+.post_list_image {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 3px ridge blue;
-    padding: 50px;
-    
-
-    text-align: center;
+    padding : 10px;
 }
 
 
-
+.padding {
+    width: 500px;
+    height: 200px;
+}
