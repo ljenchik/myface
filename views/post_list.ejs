@@ -4,14 +4,15 @@
 
 <body>
 <h1>Posts</h1>
-<div>
+
+<nav>
     <%if (previous) { %>
-        <a href="<%= previous %>"> Previous </a>
+        <a href="<%= previous %>">Previous</a>
     <% } %>
     <%if (next) { %>
-        <a href="<%= next %>"> Next </a>
+        <a href="<%= next %>">Next </a>
     <% }%>
-</div>
+</nav>
 <div class = "padding">
 <ol>
     <% postList.results.forEach(function(post) {%>
@@ -19,7 +20,7 @@
             <%= post.message %>
             <img src="<%=post.imageUrl%>" class="post_list_image" alt="user image" width=300 height=300/>
             Posted by <a href="users/<%=post.postedBy.id %>"> <%= post.postedBy.name%> </a>
-            (<%= post.postedBy.email %>)
+            <%= post.postedBy.email %>
         </li>
     <% }) %>
 </ol>
