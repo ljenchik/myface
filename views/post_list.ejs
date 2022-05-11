@@ -4,25 +4,28 @@
 
 <body>
 <h1>Posts</h1>
-<div class="post_list_item">
+<div>
+    <%if (previous) { %>
+        <a href="<%= previous %>"> Previous </a>
+    <% } %>
+    <%if (next) { %>
+        <a href="<%= next %>"> Next </a>
+    <% }%>
+</div>
+<div class = "padding">
 <ol>
     <% postList.results.forEach(function(post) {%>
-        <li>
-            <img src="<%=post.imageUrl%>"  id ="image" alt="user image" width=500 height=500/>
-            <%= post.message %> posted by <%= post.postedBy.name%> <%= post.postedBy.email %>
+        <li class="post_list_text">
+            <%= post.message %>
+            <img src="<%=post.imageUrl%>" class="post_list_image" alt="user image" width=300 height=300/>
+            Posted by <a href="users/<%=post.postedBy.id %>"> <%= post.postedBy.name%> </a>
+            (<%= post.postedBy.email %>)
         </li>
     <% }) %>
-
 </ol>
 </div>
-
-<%if (previous) { %>
-    <a href="<%= previous %>"> Previous </a>
-<% } %>
-<%if (next) { %>
-    <a href="<%= next %>"> Next </a>
-<% } %>
 </body>
+
 <%- include('_footer') -%>
 </html>
 
