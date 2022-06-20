@@ -15,7 +15,6 @@ function getPostsQuery(filter: PostsFilter): knex.QueryBuilder {
   if (filter.postedById) {
     query = query.where("userId", filter.postedById);
   }
-
   return query;
 }
 
@@ -69,3 +68,9 @@ export async function createPost(newPost: CreatePostRequest): Promise<void> {
     "*"
   );
 }
+export async function deletePost(postId: number) {
+
+  const posts = await database<Post>("posts").del("*").where("id", postId);
+  return single(posts);
+}
+

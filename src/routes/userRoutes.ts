@@ -45,4 +45,12 @@ router.get("/:userId/", async (request, response) => {
   return response.render("user_detail", user);
 });
 
+router.get("/posts/:postId", async (request, response) => {
+  const userId = parseInt(request.params.userId);
+
+  const user = await getUser(userId);
+  return response.render("user_detail", user);
+});
+
+
 export default router;

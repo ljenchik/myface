@@ -1,0 +1,57 @@
+<html lang="en-gb">
+  <%- include('_head') -%> <%- include('_header') -%>
+  <body>
+    <div>
+      <img src="<%=imageUrl%>" alt="post image" width="200" height="auto" />
+    </div>
+    <div><%= message %></div>
+    <div>
+      Posted by
+      <a href="/users/<%= postedBy.id %>" style="text-decoration: none"
+        ><%= postedBy.name %></a
+      >
+    </div>
+    <div>
+      Created at <%= Intl.DateTimeFormat('en-GB', { year: 'numeric', month:
+      'long', day: '2-digit'}).format(createdAt) %>
+    </div>
+    <ul style="list-style-type: none">
+      Liked by <%= likedBy.length%> <% likedBy.forEach(function(user) {%>
+      <li>
+        <a href="/users/<%= user.id %>"
+          ><img
+            src="<%= user.coverImageUrl%>"
+            alt="user image"
+            width="30"
+            height="30"
+        /></a>
+        <a href="/users/<%= user.id %>" style="text-decoration: none"
+          ><%= user.name %></a
+        >
+      </li>
+      <% }); %>
+    </ul>
+    <ul style="list-style-type: none">
+      Disiked by <%= dislikedBy.length%> <% dislikedBy.forEach(function(user)
+      {%>
+      <li>
+        <a href="/users/<%= user.id %>"
+          ><img
+            src="<%= user.coverImageUrl%>"
+            alt="user image"
+            width="30"
+            height="30"
+        /></a>
+        <a href="/users/<%= user.id %>" style="text-decoration: none"
+          ><%= user.name %></a
+        >
+      </li>
+      <% }); %>
+    </ul>
+    <button type="submit">Edit</button>
+    <form action="/users/<%= postedBy.id %>">
+        <button type="submit">Delete</button>
+    </form>
+  </body>
+  <%- include('_footer') -%>
+</html>

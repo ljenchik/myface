@@ -4,7 +4,6 @@
 
 <head>
     <style>
-        body {background-color: lightblue;}
         h1 {color: rgb(29, 19, 162); margin-left: 20px;}
     </style>
 </head>
@@ -12,12 +11,11 @@
 
 <body>
 <h1>Users</h1>
-<ol>
+<ol style="list-style-type:none;">
     <% results.forEach(function(user) {%>
         <li>
-            <img src="<%=user.profileImageUrl%>" alt="user image" width=20 height=20/>
-            
-            <a href="users/<%=user.id %>"> <%= user.name %></a>
+            <img src="<%=user.profileImageUrl%>" alt="user image" width=50 height=50/>
+            <a href="/users/<%=user.id %>" > <%= user.name %></a>
         </li>
     <% }); %>
 </ol>

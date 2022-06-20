@@ -1,11 +1,11 @@
 import { Page } from "../models/api/page";
 import { PostModel } from "../models/api/postModel";
 import * as postRepo from "../repos/postRepo";
-import { getByPostInteraction, getUser } from "../repos/userRepo";
 import { Post } from "../models/database/post";
 import { CreatePostRequest } from "../models/api/createPostRequest";
 import { createInteraction } from "../repos/interactionRepo";
 import { parse } from "date-fns";
+import { getByPostInteraction, getUser } from "../repos/userRepo";
 
 export async function getPageOfPosts(
   page: number,
@@ -46,6 +46,15 @@ export async function dislikePost(
   postId: number
 ): Promise<void> {
   return createInteraction(userId, postId, "DISLIKE");
+}
+
+export async function getPost(postId: number): Promise<PostModel> {
+  const post = await postRepo.getPost(postId);
+  return toPostModel(post);
+}
+
+export async function deletePost(postId: number) {
+    return postRepo.deletePost(postId);
 }
 
 async function toPostModel(post: Post): Promise<PostModel> {

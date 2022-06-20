@@ -57,4 +57,8 @@ async function toUserModel(user: User): Promise<UserModel> {
     likes: await getPostsByUserInteraction(1, 10, user.id, "LIKE"),
     dislikes: await getPostsByUserInteraction(1, 10, user.id, "DISLIKE"),
   };
+
+
+ 
+  
 }

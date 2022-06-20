@@ -5,6 +5,8 @@ import {
   dislikePost,
   getPageOfPosts,
   likePost,
+  getPost,
+  deletePost
 } from "../services/postService";
 import { body, validationResult } from "express-validator";
 import { format } from "date-fns";
@@ -63,5 +65,20 @@ router.post("/:postId/dislike/", async (request, response) => {
   await dislikePost(userId, postId);
   response.redirect(returnUrl || "/posts/");
 });
+
+router.get("/:postId/", async (request, response) => {
+  const postId = parseInt(request.params.postId);
+
+  const post = await getPost(postId);
+  return response.render("post_detail", post);
+});
+
+router.delete("/:postId/", async (request, response) => {
+  const postId = parseInt(request.params.postId);
+  const post = await deletePost(postId);
+  response.redirect("/users/:userId");
+});
+
+
 
 export default router;

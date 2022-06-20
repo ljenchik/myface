@@ -14,11 +14,12 @@
 </div>
 <div>
     Posts  
-    <ol>
+    <ol style="list-style-type:none;">
         <% posts.forEach(function(post) {%>
             <li>
-                <img src="<%= post.imageUrl%>" alt="post image" width=20 height=20/>
-                <%= post.message %>
+                <a href="/posts/<%= post.id %>"><img src="<%= post.imageUrl%>" alt="post image" width=50 height=50/></a>
+                <a href="/posts/<%= post.id %>" style="text-decoration:none;"><%= post.message %></a>
+               
             </li>
         <% }); %>
     </ol>
