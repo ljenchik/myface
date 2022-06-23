@@ -32,6 +32,11 @@ export async function getUser(userId: number): Promise<User> {
   return single(users);
 }
 
+export async function getUserByPostId(postId: number): Promise<User> {
+  const user = await database<User>("users").select("*").where("id", postId);
+  return single(user);
+}
+
 export async function getByPostInteraction(
   postId: number,
   interactionType: InteractionType,

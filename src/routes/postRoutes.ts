@@ -73,12 +73,11 @@ router.get("/:postId/", async (request, response) => {
   return response.render("post_detail", post);
 });
 
-router.delete("/:postId/", async (request, response) => {
-  const postId = parseInt(request.params.postId);
-  const post = await deletePost(postId);
-  response.redirect("/users/:userId");
-});
-
-
+// router.post("/:postId/delete", async (request, response) => {
+//   const postId = parseInt(request.params.postId);
+//   const userId = getUserById(postId);
+//   await deletePost(postId);
+//   return response.redirect(`/users/:`);
+// });
 
 export default router;

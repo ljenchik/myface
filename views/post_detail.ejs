@@ -49,7 +49,7 @@
       <% }); %>
     </ul>
     <button type="submit">Edit</button>
-    <form action="/users/<%= postedBy.id %>">
+    <form method="POST" action="/posts/<%= id %>/delete/">
         <button type="submit">Delete</button>
     </form>
   </body>

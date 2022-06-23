@@ -69,8 +69,9 @@ export async function createPost(newPost: CreatePostRequest): Promise<void> {
   );
 }
 export async function deletePost(postId: number) {
-
-  const posts = await database<Post>("posts").del("*").where("id", postId);
-  return single(posts);
+  await database<Post>("posts")
+  .select('*')
+  .where("id", postId)
+  .delete();
 }
 

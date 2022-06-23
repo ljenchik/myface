@@ -45,6 +45,15 @@ router.get("/:userId/", async (request, response) => {
   return response.render("user_detail", user);
 });
 
+
+// router.get("/:postId/", async (request, response) => {
+//   const postId = parseInt(request.params.postId);
+
+//   const user = await getUserByPostId(postId);
+//   return response.render("user_detail", user);
+// });
+
+
 router.get("/posts/:postId", async (request, response) => {
   const userId = parseInt(request.params.userId);
 
