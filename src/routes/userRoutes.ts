@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, getPageOfUsers, getUser } from "../services/userService";
+import { createUser, getPageOfUsers, getUser} from "../services/userService";
 import { CreateUserRequest } from "../models/api/createUserRequest";
 import { body, validationResult } from "express-validator";
 
@@ -40,23 +40,6 @@ router.post(
 
 router.get("/:userId/", async (request, response) => {
   const userId = parseInt(request.params.userId);
-
-  const user = await getUser(userId);
-  return response.render("user_detail", user);
-});
-
-
-// router.get("/:postId/", async (request, response) => {
-//   const postId = parseInt(request.params.postId);
-
-//   const user = await getUserByPostId(postId);
-//   return response.render("user_detail", user);
-// });
-
-
-router.get("/posts/:postId", async (request, response) => {
-  const userId = parseInt(request.params.userId);
-
   const user = await getUser(userId);
   return response.render("user_detail", user);
 });

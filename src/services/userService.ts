@@ -41,7 +41,6 @@ export async function getUserByPostId(postId: number): Promise<UserModel> {
   return toUserModel(user);
 }
 
-
 export async function createUser(newUser: CreateUserRequest): Promise<void> {
   await userRepo.createUser(newUser);
 }

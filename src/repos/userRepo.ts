@@ -33,9 +33,13 @@ export async function getUser(userId: number): Promise<User> {
 }
 
 export async function getUserByPostId(postId: number): Promise<User> {
-  const user = await database<User>("users").select("*").where("id", postId);
+  const user = await database<User>("users")
+  .innerJoin("posts", "posts.userId", "users.id")
+  .select("users.*")
+  .where("posts.id", postId);
   return single(user);
 }
+
 
 export async function getByPostInteraction(
   postId: number,

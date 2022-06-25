@@ -10,6 +10,7 @@ import {
 } from "../services/postService";
 import { body, validationResult } from "express-validator";
 import { format } from "date-fns";
+import { getUserByPostId } from "../repos/userRepo";
 
 const router = express.Router();
 
@@ -68,16 +69,15 @@ router.post("/:postId/dislike/", async (request, response) => {
 
 router.get("/:postId/", async (request, response) => {
   const postId = parseInt(request.params.postId);
-
   const post = await getPost(postId);
   return response.render("post_detail", post);
 });
 
-// router.post("/:postId/delete", async (request, response) => {
-//   const postId = parseInt(request.params.postId);
-//   const userId = getUserById(postId);
-//   await deletePost(postId);
-//   return response.redirect(`/users/:`);
-// });
+router.post("/:postId/delete/", async (request, response) => {
+  const postId = parseInt(request.params.postId);
+  const user = await getUserByPostId(postId);
+  await deletePost(postId);
+  return response.redirect(`/users/${(user).id}`);
+});
 
 export default router;
