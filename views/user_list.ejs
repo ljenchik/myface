@@ -1,31 +1,35 @@
 <html lang="en-gb">
-<%- include('_head') -%>
-<%- include('_header') -%>
+  <%- include('_head') -%> <%- include('_header') -%>
 
-<head>
+  <head>
     <style>
-        h1 {color: rgb(29, 19, 162); margin-left: 20px;}
+      h1 {
+        color: rgb(29, 19, 162);
+        margin-left: 20px;
+      }
     </style>
-</head>
+  </head>
 
-
-<body>
-<h1>Users</h1>
-<ol style="list-style-type:none;">
-    <% results.forEach(function(user) {%>
-        <li>
-            <img src="<%=user.profileImageUrl%>" alt="user image" width=50 height=50/>
-            <a href="/users/<%=user.id %>" > <%= user.name %></a>
-        </li>
-    <% }); %>
-</ol>
-<%if (next) { %>
-    <a href="<%= next %>"> Next </a>
-<% } %>
-<%if (previous) { %>
-    <a href="<%= previous %>"> Previous </a>
-<% } %>
-</body>
-<%- include('_footer') -%>
+  <body>
+    <h1>Users</h1>
+    <ol style="list-style-type: none">
+      <% results.forEach(function(user) {%>
+      <li>
+        <img
+          src="<%=user.profileImageUrl%>"
+          alt="user image"
+          width="50"
+          height="50"
+        />
+        <a href="/users/<%=user.id %>"> <%= user.name %></a>
+      </li>
+      <% }); %>
+    </ol>
+    <%if (next) { %>
+    <a style="float: right;" href="<%= next %>"> Next </a>
+    <% } %> <%if (previous) { %>
+    <a style="float: left;" href="<%= previous %>"> Previous </a>
+    <% } %>
+  </body>
+  <%- include('_footer') -%>
 </html>
-
